@@ -34,6 +34,8 @@ class LogisticRegression:
         
         return preds
     
+    def loss(self, sigmoid_preds, y):
+        p1 = np.dot()
     def predict(self, x, y):
         return
     
