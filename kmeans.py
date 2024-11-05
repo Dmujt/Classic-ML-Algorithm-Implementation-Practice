@@ -45,13 +45,26 @@ class KMeans:
         for c in range(self.k):
             self.clusters[c] = points[np.where(c == closest_cluster)]
         
+    # for all points in x
+    # returns the class/cluster it is closest to
+    #
+    # plot also plots the points x into the clusters
+    def predict(self, x, plot=False):
+        if plot:
+            plt.scatter(self.x[:,0], self.x[:,-1], color="red", alpha=0.5)
+            
+        distance_to_clusters = scipy.spatial.distance.cdist(x, self.centroids)
+        closest_cluster = np.argmin(distance_to_clusters, axis=1) #returned from function
+        return closest_cluster
+        
+    # plots the clusters
     def plot(self):
         colors = np.random.rand(self.k,3)
         
         plt.scatter(self.centroids[:,0], self.centroids[:,-1], color="black")
 
         for k in self.clusters:
-            plt.scatter(self.clusters[k][:, 0], self.clusters[k][:, -1], color=tuple(colors[k]))
+            plt.scatter(self.clusters[k][:, 0], self.clusters[k][:, -1], color=tuple(colors[k]), alpha=0.5)
         plt.show()
     
 
