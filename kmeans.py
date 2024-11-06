@@ -49,6 +49,7 @@ class KMeans:
     # returns the class/cluster it is closest to
     #
     # plot also plots the points x into the clusters
+    # only works with two points
     def predict(self, x, plot=False):
         if plot:
             plt.scatter(self.x[:,0], self.x[:,-1], color="red", alpha=0.5)
@@ -58,6 +59,7 @@ class KMeans:
         return closest_cluster
         
     # plots the clusters
+    # only works with two-points
     def plot(self):
         colors = np.random.rand(self.k,3)
         
